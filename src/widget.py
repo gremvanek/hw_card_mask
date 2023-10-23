@@ -4,3 +4,5 @@ def date_optimizer(date: str) -> str:
     :param date: str :return: str
     """
     return date[8: 10] + '.' + date[5: 7] + '.' + date[0: 4]
+
+
