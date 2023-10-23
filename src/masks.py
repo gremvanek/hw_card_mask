@@ -8,13 +8,15 @@ def mask_card(card_mask: str, card_name: str, card_names: list) -> str:
     """
     for _ in card_names:
         if card_name not in card_names:
-            print('Тип карты неизвестен')
+            print("Тип карты неизвестен")
             quit()
         else:
             if len(card_mask.replace(" ", "")) != 16:
-                return "Введенные данные неверные"
+                print("Введенные данные неверные")
             else:
-                return card_name + ' ' + card_mask[0:4] + " " + card_mask[4:6] + "** **** " + card_mask[-4:]
+                pass
+
+    return card_name + " " + card_mask[0:4] + " " + card_mask[4:6] + "** **** " + card_mask[-4:]
 
 
 def mask_check(check_mask: str) -> str:
