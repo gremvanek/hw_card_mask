@@ -9,7 +9,7 @@ def date_optimizer(date: str) -> str:
     return date[8:10] + "." + date[5:7] + "." + date[0:4]
 
 
-def card_full_printer(card: str, check_mask: str):
+def card_full_printer(card: str, check_mask: str) -> None:
     print(mask_card(card))
-    print('')
+    print("")
     print(f"Счет {mask_check(check_mask)}")
