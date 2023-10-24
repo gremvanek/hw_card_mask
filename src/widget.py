@@ -1,4 +1,4 @@
-from src.masks import mask_card, mask_check
+from src.masks import mask_card
 
 
 def date_optimizer(date: str) -> str:
@@ -9,7 +9,5 @@ def date_optimizer(date: str) -> str:
     return date[8:10] + "." + date[5:7] + "." + date[0:4]
 
 
-def card_full_printer(card: str, check_mask: str) -> None:
-    print(mask_card(card))
-    print("")
-    print(f"Счет {mask_check(check_mask)}")
+def card_full_printer(card_list: list[str]) -> str:
+    return mask_card(card_list)

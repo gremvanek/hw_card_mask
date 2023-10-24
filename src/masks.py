@@ -1,21 +1,25 @@
-def mask_card(card: str) -> str:
+def mask_card(card_list: list[str]) -> str:
     """Возвращаем результат в необходимом виде XXXX XX** **** XXXX
-    :param card: in main.py
-    :param card
     : Номер для маскирования
-    :return: Маскированный по правилу номер
-    """
-    card_list = card.split(" ")
+    :return: Маскированный по правилу номер"""
     return (
-        card_list[0] + " " + card_list[1] + " " + card_list[2][0:4] + " " + card_list[2][4:6] + "** **** " + card[-4:]
+        card_list[0]
+        + " "
+        + card_list[1]
+        + " "
+        + card_list[2][0:4]
+        + " "
+        + card_list[2][4:6]
+        + "** **** "
+        + card_list[2][-4:]
     )
 
 
-def mask_check(check_mask: str) -> str:
+def mask_check(check_mask_list: list[str]) -> str:
     """Возвращаем результат в необходимом виде **XXXX
-    :param check_mask
+    :type check_mask_list: str
+    :param check_mask_list
     : Номер для маскирования
     :return: Маскированный по правилу номер
     """
-    card_check = check_mask.split(" ")
-    return "**" + card_check[1][-4:]
+    return "**" + check_mask_list[1][-4:]
