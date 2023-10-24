@@ -1,4 +1,4 @@
-from src.masks import mask_card, mask_check
+from src.masks import mask_check
 from src.widget import date_optimizer, card_full_printer
 
 card = "Visa Platinum 7000792289606361"
