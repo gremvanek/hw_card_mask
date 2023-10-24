@@ -1,4 +1,4 @@
-from src.masks import mask_card
+from src.masks import mask_card, mask_check
 
 
 def date_optimizer(date: str) -> str:
@@ -9,12 +9,7 @@ def date_optimizer(date: str) -> str:
     return date[8:10] + "." + date[5:7] + "." + date[0:4]
 
 
-def card_full_printer(card_name_list: list[str], card_name: str, card_mask: str) -> str:
-    for _ in card_name_list:
-        if card_name not in card_name_list:
-            print("Тип карты неизвестен")
-            quit()
-        else:
-            pass
-
-    return mask_card(card_mask, card_name)
+def card_full_printer(card: str, check_mask: str):
+    print(mask_card(card))
+    print('')
+    print(f"Счет {mask_check(check_mask)}")
