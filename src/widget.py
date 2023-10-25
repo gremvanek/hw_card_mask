@@ -13,8 +13,8 @@ def card_full_printer(arg: str) -> str:
     arg_new = arg.split()
     if "Счет" in arg_new:
         elon_mask = mask_check(arg_new[-1])
-        return arg_new[0] + ' ' + elon_mask
+        return arg_new[0] + " " + elon_mask
     else:
         elon_card = mask_card(arg_new[-1])
-        new_card_name = ' '.join(arg_new[:-1])
+        new_card_name = " ".join(arg_new[:-1])
         return new_card_name + " " + elon_card
