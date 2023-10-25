@@ -1,25 +1,22 @@
-def mask_card(card_list: list[str]) -> str:
+def mask_card(card_mask: str) -> str:
     """Возвращаем результат в необходимом виде XXXX XX** **** XXXX
-    : Номер для маскирования
-    :return: Маскированный по правилу номер"""
-    return (
-        card_list[0]
-        + " "
-        + card_list[1]
-        + " "
-        + card_list[2][0:4]
-        + " "
-        + card_list[2][4:6]
-        + "** **** "
-        + card_list[2][-4:]
-    )
-
-
-def mask_check(check_mask_list: list[str]) -> str:
-    """Возвращаем результат в необходимом виде **XXXX
-    :type check_mask_list: str
-    :param check_mask_list
+    :param card_mask
     : Номер для маскирования
     :return: Маскированный по правилу номер
     """
-    return "**" + check_mask_list[1][-4:]
+    if len(card_mask.replace(" ", "")) != 16:
+        return "Введенные данные неверные"
+    else:
+        return card_mask[0:4] + " " + card_mask[4:6] + "** **** " + card_mask[-4:]
+
+
+def mask_check(check_mask: str) -> str:
+    """Возвращаем результат в необходимом виде **XXXX
+    :param check_mask
+    : Номер для маскирования
+    :return: Маскированный по правилу номер
+    """
+    if len(check_mask.replace(" ", "")) != 20:
+        return "Введенные данные неверные"
+    else:
+        return "**" + check_mask[-4:]
