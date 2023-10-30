@@ -10,11 +10,6 @@ def date_optimizer(date: str) -> str:
 
 
 def card_full_printer(arg: str) -> str:
-    """
-    Функция для работы с входными данными - номер счета или номер карты
-    :param arg: str
-    :return: str
-    """
     arg_new = arg.split()
     if "Счет" in arg_new:
         elon_mask = mask_check(arg_new[-1])
