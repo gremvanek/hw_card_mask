@@ -1,4 +1,4 @@
-from src.masks import mask_check, mask_card
+from src.masks import mask_card, mask_check
 
 
 def date_optimizer(date: str) -> str:
