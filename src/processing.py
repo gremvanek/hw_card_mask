@@ -1,5 +1,3 @@
-import re
-
 regex = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b"
 
 
@@ -24,22 +22,3 @@ def list_date_sort(state_list_dict: list[dict], reverse: bool = False) -> list[d
     """
     sorted_l_d_s = sorted(state_list_dict, key=lambda operator: operator["date"], reverse=reverse)
     return sorted_l_d_s
-
-
-def sum_divisible_by_3_or_5(lst: list) -> int:
-    """
-    Функция принимает на вход список чисел и возвращает сумму всех элементов списка,
-    которые делятся на 3 или 5 без остатка.
-    """
-    result = 0
-    for num in lst:
-        if num % 3 == 0 or num % 5 == 0:
-            result += num
-    return result
-
-
-def check_email(email: str) -> str:
-    if re.fullmatch(regex, email):
-        return "Верный Email"
-    else:
-        return "Неверный Email"
