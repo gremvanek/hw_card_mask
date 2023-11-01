@@ -5,6 +5,10 @@ from src.widget import card_full_printer, date_optimizer
 
 @pytest.fixture
 def date_for_date() -> list[str]:
+    """
+    Возвращает список из 1 строки для тестов
+    :return: list[str]
+    """
     return ["2018-07-11T02:26:18.671407"]
 
 
@@ -15,6 +19,10 @@ def test_date_optimizer(date_for_date: str, expected: str) -> None:
 
 @pytest.fixture
 def arg_test() -> list:
+    """
+    Тестовый список карт для проверки
+    :return: list
+    """
     return [
         "Maestro 1596837868705199",
         "MasterCard 7158300734726758",

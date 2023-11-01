@@ -11,8 +11,6 @@ state_list_dict = [
     {'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'},
     {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}
 ]
-lst = [1, 2, 3, 4, 5]
-email = 'choobaiz@sveta.net'
 transactions = (
     [
         {
@@ -102,7 +100,7 @@ if __name__ == "__main__":
     print("")
     print(list_date_sort(state_list_dict, False))
     print("")
-    usd_transactions = filter_by_currency(transactions, "USD")
+    usd_transactions = filter_by_currency(transactions, "RUB")
     descriptions = transaction_descriptions(transactions)
 
     for _ in range(2):
