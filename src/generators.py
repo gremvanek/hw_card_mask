@@ -49,19 +49,36 @@ transactions = [
 ]
 
 
-def filter_by_currency(transactions: list, code: str) -> "Generator":
+def filter_by_currency(transactions: list, code: str) -> Generator:
+    """
+    Функция для вывода операций по переменной code USR или RUB
+    :param transactions: list
+    :param code: str
+    :return: Generator
+    """
     for j in transactions:
         if j["operationAmount"]["currency"]["code"] == code:
             yield j
 
 
-def transaction_descriptions(transactions: list) -> "Generator":
+def transaction_descriptions(transactions: list) -> Generator:
+    """
+    Функция вывода описания транзакций
+    :param transactions: list
+    :return: Generator
+    """
     for j in transactions:
         if j["description"]:
             yield j["description"]
 
 
 def card_number_generator(arg_1: int, arg_2: int) -> Generator:
+    """
+    Функция генерации номера карты в формате XXXX XXXX XXXX XXXX в указаном диапозоне
+    :param arg_1: int
+    :param arg_2: int
+    :return: Generator
+    """
     for num in range(arg_1, arg_2 + 1):
         new_number = f"{'0' * (16 - len(str(num)))}{num}"
         yield new_number[0:4] + " " + new_number[4:8] + " " + new_number[8:12] + " " + new_number[12:16]

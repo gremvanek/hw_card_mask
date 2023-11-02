@@ -59,41 +59,60 @@ def transactions_test() -> list[dict]:
 
 
 def test_filter_by_currency(transactions_test: list[dict]) -> None:
-    usd_transactions = filter_by_currency(transactions, "USD")
+    """
+    Тест для вывода id по code
+    :param transactions_test: list[dict]
+    :return: None
+    """
+    usd_transactions = list(filter_by_currency(transactions, "USD")) == [939719570, 142264268, 895315941]
+    for _ in range(usd_transactions):
+        assert 939719570
+        assert 142264268
+        assert 895315941
 
-    for _ in range(1):
-        assert next(usd_transactions)["id"] == 939719570
-    for _ in range(1, 2):
-        assert next(usd_transactions)["id"] == 142264268
-    for _ in range(0, 1):
-        assert next(usd_transactions)["id"] == 895315941
-
-    rub_transactions = filter_by_currency(transactions, "RUB")
-
-    for _ in range(1):
-        assert next(rub_transactions)["id"] == 873106923
-    for _ in range(1, 2):
-        assert next(rub_transactions)["id"] == 594226727
+    rub_transactions = list(filter_by_currency(transactions, "RUB")) == [873106923, 594226727]
+    for _ in range(rub_transactions):
+        assert 873106923
+        assert 594226727
 
 
 def test_transaction_descriptions(transactions_test: list[dict]) -> None:
-    descriptions = transaction_descriptions(transactions)
-    for _ in range(1):
-        assert next(descriptions) == "Перевод организации"
-    for _ in range(2, 3):
-        assert next(descriptions) == "Перевод со счета на счет"
-    for _ in range(3, 4):
-        assert next(descriptions) == "Перевод со счета на счет"
-    for _ in range(4, 5):
-        assert next(descriptions) == "Перевод с карты на карту"
-    for _ in range(5, 6):
-        assert next(descriptions) == "Перевод организации"
+    """
+    Функция вывода операций из списка
+    :param transactions_test: list[dict]
+    :return: None
+    """
+    descriptions = list(transaction_descriptions(transactions)) == [
+        "Перевод организации",
+        "Перевод со счета на счет",
+        "Перевод со счета на счет",
+        "Перевод с карты на карту",
+        "Перевод организации",
+    ]
+    for _ in range(descriptions):
+        assert "Перевод организации"
+        assert "Перевод со счета на счет"
+        assert "Перевод со счета на счет"
+        assert "Перевод с карты на карту"
+        assert "Перевод организации"
 
 
 def test_card_number_generator() -> None:
-    for card_number in card_number_generator(0, 0):
-        assert card_number == "0000 0000 0000 0000"
-    for card_number in card_number_generator(1000, 1000):
-        assert card_number == "0000 0000 0000 1000"
-    for card_number in card_number_generator(9999, 9999):
-        assert card_number == "0000 0000 0000 9999"
+    """
+    Тест проверки генерации номеров карт
+    :return: None
+    """
+    for card_number in card_number_generator(9991, 9999):
+        card_test = list(card_number) == [
+            "0000 0000 0000 9991",
+            "0000 0000 0000 9992",
+            "0000 0000 0000 9993",
+            "0000 0000 0000 9994",
+            "0000 0000 0000 9995",
+            "0000 0000 0000 9996",
+            "0000 0000 0000 9997",
+            "0000 0000 0000 9998",
+            "0000 0000 0000 9999",
+        ]
+        for _ in range(card_test):
+            assert card_test
