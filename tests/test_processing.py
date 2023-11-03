@@ -1,13 +1,18 @@
 import pytest
 
 import main
-from src.processing import check_email, list_date_sort, list_dict_sort, sum_divisible_by_3_or_5
+from src.processing import list_date_sort, list_dict_sort
 
 
 @pytest.fixture
 def state_list_dict_test() -> (
     list[list[dict[str, str | int] | dict[str, str | int] | dict[str, str | int] | dict[str, str | int]]]
 ):
+    """
+        Возвращает тестовый список словарей
+        :return: list[list[dict[str, str | int] | dict[str, str | int] | dict[str, str | int] | dict[str, str | int]]]
+    )
+    """
     return [
         [
             {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
@@ -81,28 +86,3 @@ def test_list_dict_sort_2(state_list_dict_test: list[dict], expected: str) -> No
 def test_list_date_sort(list_date_sort_test: list[dict], expected: list[dict]) -> None:
     assert list_date_sort(list_date_sort_test, True) == expected
     assert list_date_sort(list_date_sort_test, False) == expected[::-1]
-
-
-@pytest.fixture
-def lst_test() -> list[list[int]]:
-    return [[0], [1, 4, 7], [1, 2, 3, 4, 5]]
-
-
-@pytest.mark.parametrize("lst_test, expected", [([0], 0), ([1, 4, 7], 0), ([1, 2, 3, 4, 5], 8)])
-def test_sum_divisible_by_3_or_5(lst_test: list, expected: str) -> None:
-    assert sum_divisible_by_3_or_5(lst_test) == expected
-
-
-@pytest.mark.parametrize(
-    "email, expected",
-    [
-        ("", "Неверный Email"),
-        ("choobaiz@sveta.net", "Верный Email"),
-        ("choobaizsvetanet", "Неверный Email"),
-        ("123", "Неверный Email"),
-        ("@@@@@", "Неверный Email"),
-        ("@.@.@.@.@", "Неверный Email"),
-    ],
-)
-def test_check_email(email: str, expected: str) -> None:
-    assert check_email(email) == expected
