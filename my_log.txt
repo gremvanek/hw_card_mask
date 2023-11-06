@@ -1,0 +1,1 @@
+2023-11-06 19-16-59 Function called my_function with args: (1, 2)and kwargs: {}. Result: 3

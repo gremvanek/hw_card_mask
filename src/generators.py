@@ -61,10 +61,10 @@ def filter_by_currency(transactions: list, code: str) -> Generator:
             yield j
 
 
-def transaction_descriptions(transactions: list) -> Generator:
+def transaction_descriptions(transaction: list) -> Generator:
     """
     Функция вывода описания транзакций
-    :param transactions: list
+    :param transaction: list
     :return: Generator
     """
     for j in transactions:
