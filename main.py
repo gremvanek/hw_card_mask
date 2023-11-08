@@ -113,4 +113,7 @@ if __name__ == "__main__":
     for card_number in card_number_generator(1234432112344321, 1234432112344329):
         print(card_number)
 
-    my_function(1, 2)
+    my_function(2, 2)
+    my_function(4, 2)
+    my_function(6, 2)
+
