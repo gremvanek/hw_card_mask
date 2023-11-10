@@ -1,42 +1,47 @@
 from datetime import datetime
 from functools import wraps
-from typing import Any, Callable, Tuple
+from typing import Any, Callable
 
 
-def log(file_name: Any = None) -> Callable:
-    def wrapper(func: Any) -> Callable[[tuple[Any, ...]], str]:
+def log(file_name: str | None = None) -> Callable:
+    """
+    Декоратор для проверки функций
+    :param file_name: str | None
+    :return: Callable
+    """
+
+    def decorator(func: Callable) -> Callable:
         @wraps(func)
-        def inner(*args: Any) -> str:
-            result = func(*args)
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
+            status = "ok"
+            try:
+                result = func(*args, **kwargs)
+            except Exception as e:
+                result = None
+                status = f"Error: {e}. Inputs: {args, kwargs}"
             current_datetime = datetime.now().strftime("%Y-%m-%d %H-%M-%S")
-            str_current_datetime = str(current_datetime)
-            if file_name is not None:
-                with open("./my_log.txt", "a+", encoding="utf-8") as f:
-                    f.write(
-                        f"{str_current_datetime} Function called {func.__name__} with args: {args} "
-                        f". Result: {result}\n"
-                    )
-                    return (
-                        f"{str_current_datetime} Function called {func.__name__} with args: {args} "
-                        f". Result: {result}\n"
-                    )
+            log_info = f"{current_datetime} Function called {func.__name__} Result: {status}"
+            if file_name:
+                with open(file_name, "a+", encoding="utf-8") as f:
+                    f.write(log_info + "\n")
             else:
-                return (
-                    f"{str_current_datetime} Function called {func.__name__} with args: {args} "
-                    f". Result: {result}\n"
-                )
+                print(log_info)
+            return result
 
-        return inner
+        return wrapper
 
-    return wrapper
+    return decorator
 
 
-@log(file_name="my_log.txt")
+@log("my.txt")
 def my_function(x: int, y: int) -> float:
     """
-    Функция из дз
+    Функция для проверки декоратора
     :param x: int
     :param y: int
     :return: int
     """
-    return x / y
+    return x + y
+
+
+print(my_function(1, 2))

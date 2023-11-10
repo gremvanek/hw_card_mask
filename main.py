@@ -1,4 +1,3 @@
-from src.decorators import my_function
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 from src.processing import list_dict_sort, list_date_sort
 from src.widget import date_optimizer, card_full_printer
@@ -112,8 +111,3 @@ if __name__ == "__main__":
     print("")
     for card_number in card_number_generator(1234432112344321, 1234432112344329):
         print(card_number)
-
-    my_function(2, 2)
-    my_function(4, 2)
-    my_function(6, 2)
-
