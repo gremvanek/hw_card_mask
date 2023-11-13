@@ -4,7 +4,7 @@ from src.widget import date_optimizer, card_full_printer
 
 card_mask = "Visa Platinum 7000792289606361"
 check_mask = "Счет 35383033474447895560"
-date = "2018-07-11T02:26:18.671407"
+date_for_func = "2018-07-11T02:26:18.671407"
 state_list_dict = [
     {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
     {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'},
@@ -92,9 +92,9 @@ transactions = (
 )
 
 if __name__ == "__main__":
-    print(date_optimizer(date))
+    print(date_optimizer(date_for_func))
     print("")
-    print(card_full_printer(check_mask))
+    print(card_full_printer(card_mask))
     print("")
     print(list_dict_sort(state_list_dict, 'CANCELED'))
     print("")

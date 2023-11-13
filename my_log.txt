@@ -1,0 +1,6 @@
+2023-11-08 23-30-44 Function called my_function with args: (2, 2) . Result: 1.0
+2023-11-08 23-30-44 Function called my_function with args: (4, 2) . Result: 2.0
+2023-11-08 23-30-44 Function called my_function with args: (6, 2) . Result: 3.0
+2023-11-08 23-31-14 Function called my_function with args: (2, 2) . Result: 1.0
+2023-11-08 23-31-14 Function called my_function with args: (4, 2) . Result: 2.0
+2023-11-08 23-31-14 Function called my_function with args: (6, 2) . Result: 3.0
