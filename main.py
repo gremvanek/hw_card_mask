@@ -1,7 +1,11 @@
+import pathlib
+
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 from src.processing import list_dict_sort, list_date_sort
+from src.utils import my_transaction_func, json_file_read
 from src.widget import date_optimizer, card_full_printer
 
+file_path = pathlib.Path('data', 'operations.json')
 card_mask = "Visa Platinum 7000792289606361"
 check_mask = "Счет 35383033474447895560"
 date_for_func = "2018-07-11T02:26:18.671407"
@@ -92,22 +96,24 @@ transactions = (
 )
 
 if __name__ == "__main__":
-    print(date_optimizer(date_for_func))
-    print("")
-    print(card_full_printer(card_mask))
-    print("")
-    print(list_dict_sort(state_list_dict, 'CANCELED'))
-    print("")
-    print(list_date_sort(state_list_dict, False))
-    print("")
-    usd_transactions = filter_by_currency(transactions, "RUB")
-    descriptions = transaction_descriptions(transactions)
-
-    for _ in range(2):
-        print(next(usd_transactions)["id"])
-    print("")
-    for _ in range(5):
-        print(next(descriptions))
-    print("")
-    for card_number in card_number_generator(1234432112344321, 1234432112344329):
-        print(card_number)
+    # print(date_optimizer(date_for_func))
+    # print("")
+    # print(card_full_printer(card_mask))
+    # print("")
+    # print(list_dict_sort(state_list_dict, 'CANCELED'))
+    # print("")
+    # print(list_date_sort(state_list_dict, False))
+    # print("")
+    # usd_transactions = filter_by_currency(transactions, "RUB")
+    # descriptions = transaction_descriptions(transactions)
+    #
+    # for _ in range(2):
+    #     print(next(usd_transactions)["id"])
+    # print("")
+    # for _ in range(5):
+    #     print(next(descriptions))
+    # print("")
+    # for card_number in card_number_generator(1234432112344321, 1234432112344329):
+    #     print(card_number)
+    transaction = json_file_read(file_path)
+    print(my_transaction_func(transaction))

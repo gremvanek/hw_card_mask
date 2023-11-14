@@ -1,35 +1,32 @@
 import json
 import pathlib
-import random
+from typing import Any
 
 file_path = pathlib.Path('data', 'operations.json')
 
 
-def json_file_read() -> dict:
+def json_file_read(file_name: Any) -> Any:
     """
     Функция для чтения файла json.
     :return: dict
     """
+    file_name = file_path
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_name, 'r', encoding='utf-8') as f:
             operations = json.load(f)
-    except FileExistsError:
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
         operations = []
-    except json.decoder.JSONDecodeError:
-        operations = []
-    return random.choice(operations)
+    return operations
 
 
-def my_transaction_func() -> float | str:
+def my_transaction_func(transaction: dict) -> float | str:
     """
     Функция выполняет транзакцию в рублях.
     :rtype: Any
     """
-    operation_dict = json_file_read()
-    currency_code = operation_dict['operationAmount']['currency']['code']
-    amount_transaction = operation_dict['operationAmount']['amount']
+    currency_code = transaction['operationAmount']['currency']['code']
+    amount_transaction = transaction['operationAmount']['amount']
     if currency_code != 'RUB':
-        message_for_return = "Транзация выполнена не в рублях. Укажите транзакцию в рублях"
-        return message_for_return
+        raise ValueError("Транзакция выполнена не в рублях. Укажите транзакцию в рублях")
     else:
         return float(amount_transaction)
