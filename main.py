@@ -1,4 +1,5 @@
 import pathlib
+import random
 
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 from src.processing import list_dict_sort, list_date_sort
@@ -115,5 +116,5 @@ if __name__ == "__main__":
     # print("")
     # for card_number in card_number_generator(1234432112344321, 1234432112344329):
     #     print(card_number)
-    transaction = json_file_read(file_path)
+    transaction = random.choice(json_file_read(file_path))
     print(my_transaction_func(transaction))
