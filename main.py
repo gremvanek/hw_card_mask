@@ -101,6 +101,7 @@ if __name__ == "__main__":
     print("")
     print(card_full_printer(card_mask))
     print("")
+    print(card_full_printer(check_mask))
     print(list_dict_sort(state_list_dict, 'CANCELED'))
     print("")
     print(list_date_sort(state_list_dict, False))
