@@ -27,11 +27,13 @@ def json_file_read(file_name: Any) -> Any:
     logger_json.info('Открытие файла json.')
     try:
         with open(file_name, 'r', encoding='utf-8') as f:
-            logger_json.info(f"json_file_read successful with result: operations.json.")
+            logger_json.info("json_file_read successful with result: operations.json.")
             operations = json.load(f)
-    except (FileNotFoundError, json.decoder.JSONDecodeError):
-        (logger_json.error("FileNotFoundError result: []", exc_info=True) or
-         logger_json.error("json.decoder.JSONDecodeError result: []", exc_info=True))
+    except (FileNotFoundError, json.decoder.JSONDecodeError) as e_1:
+        if FileNotFoundError == e_1:
+            logger_json.error("FileNotFoundError result: []")
+        else:
+            logger_json.error("json.decoder.JSONDecodeError result: []")
         operations = []
     return operations
 
