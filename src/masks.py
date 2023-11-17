@@ -26,8 +26,8 @@ def mask_card(card_mask: str) -> str:
         logger_mask_card.error('ValueError: Номер карты неверный')
         return "Введенные данные неверные"
     else:
-        logger_mask_card.info(f"Номер карты: {card_mask[0:4] + " " + card_mask[4:6] + "** **** " + card_mask[-4:]}")
-        return card_mask[0:4] + " " + card_mask[4:6] + "** **** " + card_mask[-4:]
+        logger_mask_card.info(f"Номер карты: {card_mask[0:4] + ' ' + card_mask[4:6] + '** **** ' + card_mask[-4:]}")
+        return card_mask[0:4] + ' ' + card_mask[4:6] + "'** **** '" + card_mask[-4:]
 
 
 def mask_check(check_mask: str) -> str:
@@ -40,7 +40,7 @@ def mask_check(check_mask: str) -> str:
     logger_mask_check.info('Запуск функции для маскирования счёта.')
     if len(check_mask.replace(" ", "")) != 20:
         logger_mask_check.error('ValueError: Номер счёта неверный')
-        return "Введенные данные неверные"
+        return 'Введенные данные неверные'
     else:
-        logger_mask_check.info(f"Номер счёта: {"**" + check_mask[-4:]}")
-        return "**" + check_mask[-4:]
+        logger_mask_check.info(f"Номер счёта: {'**' + check_mask[-4:]}")
+        return '**' + check_mask[-4:]
