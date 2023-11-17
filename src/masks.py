@@ -42,5 +42,5 @@ def mask_check(check_mask: str) -> str:
         logger_mask_check.error('ValueError: Номер счёта неверный')
         return "Введенные данные неверные"
     else:
-        logger_mask_check.info(f"Номер счёта: {check_mask[0:4] + "**" + check_mask[-4:]}")
+        logger_mask_check.info(f"Номер счёта: {"**" + check_mask[-4:]}")
         return "**" + check_mask[-4:]
