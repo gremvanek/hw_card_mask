@@ -97,24 +97,25 @@ transactions = (
 )
 
 if __name__ == "__main__":
-    # print(date_optimizer(date_for_func))
-    # print("")
-    # print(card_full_printer(card_mask))
-    # print("")
-    # print(list_dict_sort(state_list_dict, 'CANCELED'))
-    # print("")
-    # print(list_date_sort(state_list_dict, False))
-    # print("")
-    # usd_transactions = filter_by_currency(transactions, "RUB")
-    # descriptions = transaction_descriptions(transactions)
-    #
-    # for _ in range(2):
-    #     print(next(usd_transactions)["id"])
-    # print("")
-    # for _ in range(5):
-    #     print(next(descriptions))
-    # print("")
-    # for card_number in card_number_generator(1234432112344321, 1234432112344329):
-    #     print(card_number)
+    print(date_optimizer(date_for_func))
+    print("")
+    print(card_full_printer(card_mask))
+    print("")
+    print(card_full_printer(check_mask))
+    print(list_dict_sort(state_list_dict, 'CANCELED'))
+    print("")
+    print(list_date_sort(state_list_dict, False))
+    print("")
+    usd_transactions = filter_by_currency(transactions, "RUB")
+    descriptions = transaction_descriptions(transactions)
+
+    for _ in range(2):
+        print(next(usd_transactions)["id"])
+    print("")
+    for _ in range(5):
+        print(next(descriptions))
+    print("")
+    for card_number in card_number_generator(1234432112344321, 1234432112344329):
+        print(card_number)
     transaction = random.choice(json_file_read(file_path))
     print(my_transaction_func(transaction))
