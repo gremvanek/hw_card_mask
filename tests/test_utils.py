@@ -4,7 +4,7 @@ import pytest
 
 from src.utils import my_transaction_func
 
-file_path = pathlib.Path("data", "operations.json")
+file_path = pathlib.Path("data_files", "operations.json")
 
 
 # @pytest.mark.parametrize('dict_test, expected', [{

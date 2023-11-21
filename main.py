@@ -6,7 +6,7 @@ from src.processing import list_dict_sort, list_date_sort
 from src.utils import my_transaction_func, json_file_read
 from src.widget import date_optimizer, card_full_printer
 
-file_path = pathlib.Path('data', 'operations.json')
+file_path = pathlib.Path('data_files', 'operations.json')
 card_mask = "Visa Platinum 7000792289606361"
 check_mask = "Счет 35383033474447895560"
 date_for_func = "2018-07-11T02:26:18.671407"

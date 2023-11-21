@@ -2,7 +2,7 @@ import json
 import pathlib
 from typing import Any
 
-file_path = pathlib.Path('data', 'operations.json')
+file_path = pathlib.Path('data_files', 'operations.json')
 
 
 def json_file_read(file_name: Any) -> Any:
