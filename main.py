@@ -1,10 +1,7 @@
 import pathlib
 import random
 
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
-from src.processing import list_dict_sort, list_date_sort
 from src.utils import my_transaction_func, json_file_read
-from src.widget import date_optimizer, card_full_printer
 
 file_path = pathlib.Path('data_files', 'operations.json')
 card_mask = "Visa Platinum 7000792289606361"

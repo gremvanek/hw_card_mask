@@ -62,11 +62,11 @@ def transaction_tests() -> Any:
     return sample_list
 
 
-def test_transaction_csv(transaction_tests):
+def test_transaction_csv(transaction_tests: Any) -> None:
     for _ in range(len(transaction_tests)):
         assert universal_opener(FILE_PATH_CSV)[:5] == transaction_tests
 
 
-def test_transaction_xlsx(transaction_tests):
+def test_transaction_xlsx(transaction_tests: Any) -> None:
     for _ in range(len(transaction_tests)):
         assert universal_opener(FILE_PATH_XLSX)[:5] == transaction_tests

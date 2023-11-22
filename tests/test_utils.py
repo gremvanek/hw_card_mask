@@ -37,7 +37,7 @@ file_path = pathlib.Path("data_files", "operations.json")
 #     "to": "Счет 35383033474447895560"
 #   }, ])
 @pytest.fixture
-def test_dicts():
+def test_dicts() -> list[dict]:
     return [
         {
             "id": 441945886,
@@ -60,7 +60,7 @@ def test_dicts():
     ]
 
 
-def test_my_function(test_dicts: list[dict]):
+def test_my_function(test_dicts: list[dict]) -> None:
     with pytest.raises(ValueError):
         assert my_transaction_func(test_dicts[1]) == "Транзакция выполнена не в рублях. Укажите транзакцию в рублях"
     assert my_transaction_func(test_dicts[0]) == 31957.58
