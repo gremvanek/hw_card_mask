@@ -35,4 +35,4 @@ def universal_opener(file_name: Any) -> Any:
     return transaction_dict
 
 
-print(universal_opener(FILE_PATH_CSV))
+universal_opener(FILE_PATH_CSV)
