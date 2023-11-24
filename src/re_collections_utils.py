@@ -2,7 +2,7 @@ import pathlib
 import re
 
 from typing import Generator, Any
-
+from collections import Counter
 from src.panda import universal_opener
 
 ROOT_PATH = pathlib.Path(__file__).parent.parent
@@ -19,7 +19,7 @@ def function_for_search(dict_list: list[dict], search_string: Any = None) -> Gen
     Функция для поиска операций.
     :return: list[dict]
     """
-    search_string = 'Перевод организации'
+    search_string = input(str('Введите строку для поиска операции: ')).capitalize()
     for dicts in dict_list:
         for key, value in dicts.items():
             pattern = re.compile(search_string).search(str(value) or str(key))
@@ -38,15 +38,10 @@ def function_for_count(dict_list: list[dict], description_dict: Any = None) -> A
     Функция для поиска операций.
     :return: list[dict]
     """
-    for dicts in dict_list:
-        for key, value in dicts.items():
-            for key_2, value_2 in description_dict.items():
-                pattern = re.compile(key_2).search(str(value))
-                if pattern:
-                    description_dict.update({key_2: description_dict[key_2] + 1})
-
-    return description_dict
+    descriptions = [x["description"] for x in dict_list if x["description"] in description_dict.keys()]
+    counter = Counter(descriptions)
+    return counter
 
 
-print(list(function_for_search(dict_list)))
+# print(list(function_for_search(dict_list)))
 print(function_for_count(dict_list, description_dict))
