@@ -19,7 +19,6 @@ def function_for_search(dict_list: list[dict], search_string: Any = None) -> Gen
     Функция для поиска операций.
     :return: list[dict]
     """
-    search_string = input(str('Введите строку для поиска операции: ')).capitalize()
     for dicts in dict_list:
         for key, value in dicts.items():
             pattern = re.compile(search_string).search(str(value) or str(key))
@@ -41,7 +40,3 @@ def function_for_count(dict_list: list[dict], description_dict: Any = None) -> A
     descriptions = [x["description"] for x in dict_list if x["description"] in description_dict.keys()]
     counter = Counter(descriptions)
     return counter
-
-
-# print(list(function_for_search(dict_list)))
-print(function_for_count(dict_list, description_dict))

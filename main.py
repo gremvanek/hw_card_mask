@@ -1,7 +1,9 @@
 import pathlib
-import random
 
-from src.utils import my_transaction_func, json_file_read
+
+from src.panda import universal_opener
+from src.re_collections_utils import function_for_count, function_for_search
+
 
 file_path = pathlib.Path('data_files', 'operations.json')
 card_mask = "Visa Platinum 7000792289606361"
@@ -92,7 +94,14 @@ transactions = (
         }
     ]
 )
-
+ROOT_PATH = pathlib.Path(__file__).parent
+FILE_PATH_CSV = ROOT_PATH.joinpath('data_files', 'transactions_2.csv')
+FILE_PATH_XLSX = ROOT_PATH.joinpath('data_files', 'transactions_excel.xlsx')
+FILE_PATH_JSON = ROOT_PATH.joinpath('data_files', 'operations.json')
+dict_list = universal_opener(FILE_PATH_CSV)
+description_dict = {'Перевод организации': 0, 'Перевод с карты на карту': 0, 'Открытие вклада': 0,
+                    'Перевод со счета на счет': 0}
+search_string = "Перевод организации"
 if __name__ == "__main__":
     # print(date_optimizer(date_for_func))
     # print("")
@@ -113,5 +122,7 @@ if __name__ == "__main__":
     # print("")
     # for card_number in card_number_generator(1234432112344321, 1234432112344329):
     #     print(card_number)
-    transaction = random.choice(json_file_read(file_path))
-    print(my_transaction_func(transaction))
+    # transaction = random.choice(json_file_read(file_path))
+    # print(my_transaction_func(transaction))
+    print(function_for_count(dict_list, description_dict))
+    print(list(function_for_search(dict_list, search_string)))
